@@ -1,14 +1,30 @@
 <?php
 
-namespace kevinoo\QueryParser;
+namespace kevinoo\QueryParser\Statement;
 
-use DateTime;
+use Exception;
 
 
 /**
  *
 */
-abstract class DeleteStatement extends AbstractStatement {
+class DeleteStatement extends AbstractStatement {
+
+
+    public function parseQuery(){
+
+        preg_match("/DELETE FROM `?(?<table_name>\w+)`?[ ]+WHERE[ ]*(?:`\w+`\.)?`?(?<where_key>[\w]+)`? ?(?:IN|=) ?(?:'?(?<id>\d+)'?|\((?<ids>[\d,]+)\))/", $this->getQuery(), $matches );
+
+        if( empty($matches) ){
+            throw new Exception('Unrecognizable table name');
+        }
+
+        $this->setTableName($matches['table_name']);
+        $this->setWhereConditions([
+            $matches['where_key'] => explode(',', $matches['ids'] ?? $matches['id'] )
+        ]);
+
+    }
 
 
     ///////////////////////////////////////
