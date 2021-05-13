@@ -15,6 +15,10 @@ class InsertStatement extends AbstractStatement {
 
         preg_match('/INSERT INTO `?(?<table_name>\w+)`?[\s]*\((?<columns>.+)\)[\s]*VALUES[\s]*\((?<values>.+)\)/',$this->getQuery(),$matches);
 
+        if( empty($matches) ){
+            throw new Exception('Unrecognizable table name');
+        }
+
         $this->setTableName($matches['table_name']);
 
         $this->setColumns( $this->normalizeColumnsString($matches['columns']) );
