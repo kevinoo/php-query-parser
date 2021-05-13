@@ -1,0 +1,26 @@
+{
+    "name": "kevinoo/php-query-parser",
+    "description": "An utility to parse a database query",
+    "homepage": "https://github.com/kevinoo/php-terminal-progress-bar",
+    "keywords": ["utility","database","mysql","parser","query","statement"],
+    "type": "library",
+    "version": "0.0.1",
+    "minimum-stability": "beta",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kevin Lucich",
+            "email": "lucichkevin@gmail.com",
+            "homepage": "https://www.lucichkevin.it",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "kevinoo\\QueryParser\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4|^8"
+    }
+}
