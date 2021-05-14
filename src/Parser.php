@@ -24,13 +24,14 @@ class Parser {
     /**
      * @return InsertStatement|UpdateStatement|DeleteStatement|SelectStatement
      * @throws Exception
+     * @noinspection SqlWithoutWhere
      */
     public static function parse( string $statement_string ){
 
         $statement_string = str_replace( [static::MYSQL_DELIMITER,"\t","\n","\r"],['',' ',' ',' '],$statement_string);
 
-        print_r($statement_string);
-        echo "\n\n";
+//        print_r($statement_string);
+//        echo "\n\n";
 
         if( stripos($statement_string,'INSERT INTO ') !== false ){
             $statement = new InsertStatement();
