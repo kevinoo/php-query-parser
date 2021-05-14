@@ -1,9 +1,6 @@
 <?php
 /** @noinspection SqlResolve */
 
-use kevinoo\QueryParser\Parser;
-use kevinoo\QueryParser\Statement\InsertStatement;
-use kevinoo\QueryParser\Statement\UpdateStatement;
 use PHPUnit\Framework\TestCase;
 
 
