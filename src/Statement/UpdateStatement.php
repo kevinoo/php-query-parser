@@ -39,7 +39,7 @@ class UpdateStatement extends AbstractStatement {
             $where_key => $where_condition_value
         ]);
 
-        preg_match_all("/`?([\w]+)`? ?= ?(\w+\([a-zA-Z0-9, ']+\)|'?[\w ]*'?)/", str_replace(['  ','  ','  '],' ',$string_query_set), $matches );
+        preg_match_all("/`?([\w]+)`? ?= ?['\"]?(\w+\([a-zA-Z0-9, ']+\)|'?[\w ]*'?)['\"]?/", str_replace(['  ','  ','  '],' ',$string_query_set), $matches );
 
         $this->setColumns( $this->normalizeStringToArray($matches[1]) );
 
